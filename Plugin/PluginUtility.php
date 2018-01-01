@@ -26,12 +26,11 @@ class PluginUtility
     public function __construct(
         \Magento\SalesRule\Model\CouponFactory $couponFactory,
         \MagePal\LimitGuestCheckoutCoupon\Helper\Data $helperData
-    )
-    {
+    ) {
         $this->couponFactory = $couponFactory;
         $this->helperData = $helperData;
     }
-        /**
+    /**
      * @param $subject
      * @param \Closure $proceed
      * @param $rule
@@ -45,17 +44,15 @@ class PluginUtility
 
         $couponCode = $address->getQuote()->getCouponCode();
 
-        if($this->helperData->isEnabled() && $couponCode){
+        if ($this->helperData->isEnabled() && $couponCode) {
             $coupon = $this->couponFactory->create();
             $coupon->load($couponCode, 'code');
 
-            if($coupon->getId() && $rule->getUsesPerCoupon() && $coupon->getTimesUsed() >= $rule->getUsesPerCoupon()){
+            if ($coupon->getId() && $rule->getUsesPerCoupon() && $coupon->getTimesUsed() >= $rule->getUsesPerCoupon()) {
                 $result = false;
             }
         }
 
         return $result;
     }
-
-
 }
