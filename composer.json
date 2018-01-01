@@ -1,5 +1,5 @@
 {
-    "name": "magepal/coupon-limit-guest-checkout",
+    "name": "magepal/magento2-coupon-limit-guest-checkout",
     "description": "Restricting coupon with maximum uses for guest checkout for Magento < 2.3.x",
     "require": {
         "php": "~5.6.0|7.0.2|7.0.4|~7.0.6|~7.1.0",
