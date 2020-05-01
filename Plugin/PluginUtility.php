@@ -3,43 +3,48 @@
  * Copyright © MagePal LLC. All rights reserved.
  * See COPYING.txt for license details.
  * http://www.magepal.com | support@magepal.com
-*/
+ **/
 
 namespace MagePal\LimitGuestCheckoutCoupon\Plugin;
+
+use Closure;
+use Exception;
+use Magento\SalesRule\Model\CouponFactory;
+use MagePal\LimitGuestCheckoutCoupon\Helper\Data;
 
 class PluginUtility
 {
     /**
-     * @var \Magento\SalesRule\Model\CouponFactory
+     * @var CouponFactory
      */
     protected $couponFactory;
 
     /**
-     * @var \MagePal\LimitGuestCheckoutCoupon\Helper\Data
+     * @var Data
      */
     protected $helperData;
 
     /**
      * PluginUtility constructor.
-     * @param \Magento\SalesRule\Model\CouponFactory $couponFactory
-     * @param \MagePal\LimitGuestCheckoutCoupon\Helper\Data $helperData
+     * @param CouponFactory $couponFactory
+     * @param Data $helperData
      */
     public function __construct(
-        \Magento\SalesRule\Model\CouponFactory $couponFactory,
-        \MagePal\LimitGuestCheckoutCoupon\Helper\Data $helperData
+        CouponFactory $couponFactory,
+        Data $helperData
     ) {
         $this->couponFactory = $couponFactory;
         $this->helperData = $helperData;
     }
     /**
      * @param $subject
-     * @param \Closure $proceed
+     * @param Closure $proceed
      * @param $rule
      * @param $address
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
-    public function aroundCanProcessRule($subject, \Closure $proceed, $rule, $address)
+    public function aroundCanProcessRule($subject, Closure $proceed, $rule, $address)
     {
         $result = $proceed($rule, $address);
 
@@ -49,7 +54,9 @@ class PluginUtility
             $coupon = $this->couponFactory->create();
             $coupon->load($couponCode, 'code');
 
-            if ($coupon->getId() && $rule->getUsesPerCoupon() && $coupon->getTimesUsed() >= $rule->getUsesPerCoupon()) {
+            if ($coupon->getId() && $rule->getUsesPerCoupon()
+                && $coupon->getTimesUsed() >= $rule->getUsesPerCoupon()
+            ) {
                 $result = false;
             }
         }
