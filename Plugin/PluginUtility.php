@@ -11,7 +11,6 @@ use Closure;
 use Exception;
 use Magento\SalesRule\Model\CouponFactory;
 use MagePal\LimitGuestCheckoutCoupon\Helper\Data;
-use MagePal\LimitGuestCheckoutCoupon\Logger\Logger;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 
 class PluginUtility
@@ -27,11 +26,6 @@ class PluginUtility
     protected $helperData;
 
     /**
-     * @var \MagePal\LimitGuestCheckoutCoupon\Logger\Logger
-     */
-    protected $_logger;
-
-    /**
      * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
      */
     protected $_orderCollectionFactory;
@@ -45,12 +39,10 @@ class PluginUtility
     public function __construct(
         CouponFactory $couponFactory,
         Data $helperData,
-        Logger $logger,
         CollectionFactory $orderCollectionFactory
     ) {
         $this->couponFactory = $couponFactory;
         $this->helperData = $helperData;
-        $this->_logger = $logger;
         $this->_orderCollectionFactory = $orderCollectionFactory;
     }
 
