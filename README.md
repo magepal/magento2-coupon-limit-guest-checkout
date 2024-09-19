@@ -1,4 +1,4 @@
-<a href="http://www.magepal.com" title="Magento 2 Marketplace" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" alt="Magento 2 Extension and Plugins" /></a>
+<a href="https://www.magepal.com" title="Magento 2 Marketplace" ><img src="https://image.ibb.co/dHBkYH/Magepal_logo.png" width="100" align="right" alt="Magento 2 Extension and Plugins" /></a>
 
 ## Limit Guest Checkout Coupon Code
 
