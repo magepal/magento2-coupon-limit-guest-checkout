@@ -2,13 +2,13 @@
     "name": "magepal/magento2-coupon-limit-guest-checkout",
     "description": "Restricting coupon with maximum uses for guest checkout for Magento < 2.3.x",
     "require": {
-        "php": "~7.4.0|~8.1.0|~8.2.0|~8.3.0",
+        "php": "~7.4.0|~8.1.0|~8.2.0|~8.3.0|~8.4.0",
         "magento/module-backend": "100.0.*|100.1.*|100.2.*|101.0.*|102.0.*",
         "magento/framework": "100.0.*|100.1.*|101.0.*|102.0.*|103.0.*",
         "magepal/magento2-core": ">=1.1.11"
     },
     "type": "magento2-module",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "license": [
         "proprietary"
     ],
